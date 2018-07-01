@@ -1,0 +1,47 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+  <h1>Produtos</h1>
+
+  <a href="/produto/novo" class="btn btn-primary">Novo</a>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Preço</th>
+        <th>Categoria</th>
+        <th>Marca</th>
+        <th>Tipo Pet</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for produto in produtos %}
+        <tr>
+          <td>{{produto.id}}</td>
+          <td>{{produto.nome}}</td>
+          <td>{{produto.descricao}}</td>
+          <td>{{produto.preco}}</td>
+          <td>{{produto.id_categoria}}</td>
+          <td>{{produto.id_marca}}</td>
+          <td>{{produto.id_tipo_pet}}</td>
+          <td>
+            <a href="/produto/{{produto.id}}" class="btn btn-primary">Editar</a>
+            <button class="btn btn-danger"
+              onclick="event.preventDefault(); document.getElementById('logout-form-{{produto.id}}').submit();">Excluir</button>
+          </td>
+          <form id="logout-form-{{produto.id}}" action="/produto/{{produto.id}}" method="POST" style="display: none;">
+            <input type="hidden" name="_method" value="DELETE" />
+          </form>
+        </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+
+{% endblock %}

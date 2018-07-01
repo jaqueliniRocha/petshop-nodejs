@@ -1,0 +1,48 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+<h1>Cadastro de Produto</h1>
+
+<div class="col-md-6">
+  <form action="/produto" method="post">
+
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
+    </div>
+
+    <div class="form-group">
+      <label for="descricao">Descrição</label>
+      <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição">
+    </div>
+
+    <div class="form-group">
+      <label for="preco">Preço</label>
+      <input type="text" class="form-control" name="preco" id="preco" placeholder="Preço">
+    </div>
+
+    <div class="form-group">
+      <label for="id_categoria">ID Categoria</label>
+      <input type="text" class="form-control" name="id_categoria" id="id_categoria" placeholder="ID Categoria">
+    </div>
+
+    <div class="form-group">
+      <label for="id_marca">ID Marca</label>
+      <input type="text" class="form-control" name="id_marca" id="id_marca" placeholder="ID Marca">
+    </div>
+
+    <div class="form-group">
+      <label for="id_tipo_pet">ID Tipo Pet</label>
+      <input type="text" class="form-control" name="id_tipo_pet" id="id_tipo_pet" placeholder="ID Tipo Pet">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <a href="#" class="btn btn-default">Voltar</a>
+
+  </form>
+</div>
+
+
+
+{% endblock %}

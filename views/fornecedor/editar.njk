@@ -1,0 +1,35 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+<h1>Alteração de Fornecedor</h1>
+<div class="col-md-6">
+  <form action="/fornecedor/{{fornecedor.id}}" method="post">
+    <input type="hidden" name="_method" value="PUT">
+
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" value="{{fornecedor.nome}}">
+    </div>
+
+    <div class="form-group">
+      <label for="cnpj">CNPJ</label>
+      <input type="text" class="form-control" name="cnpj" id="cnpj" placeholder="CNPJ" value="{{fornecedor.cnpj}}">
+    </div>
+
+    <div class="form-group">
+      <label for="endereco">Endereço</label>
+      <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereço" value="{{fornecedor.endereco}}">
+    </div>
+
+    <div class="form-group">
+      <label for="telefone">Telefone</label>
+      <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" value="{{fornecedor.telefone}}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="#" class="btn btn-default">Voltar</a>
+  </form>
+</div>
+
+{% endblock %}

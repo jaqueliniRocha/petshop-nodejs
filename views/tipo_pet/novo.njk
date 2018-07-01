@@ -1,0 +1,23 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+<h1>Cadastro de Tipos Pet</h1>
+
+<div class="col-md-6">
+  <form action="/tipo_pet" method="post">
+
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <a href="#" class="btn btn-default">Voltar</a>
+
+  </form>
+</div>
+
+
+
+{% endblock %}

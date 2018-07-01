@@ -1,0 +1,37 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+  <h1>Tipos Pet</h1>
+
+  <a href="/tipo_pet/novo" class="btn btn-primary">Novo</a>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tipos_pet in tipos_pets %}
+        <tr>
+          <td>{{tipos_pet.id}}</td>
+          <td>{{tipos_pet.nome}}</td>
+          <td>
+            <a href="/tipo_pet/{{tipos_pet.id}}" class="btn btn-primary">Editar</a>
+            <button class="btn btn-danger"
+              onclick="event.preventDefault(); document.getElementById('logout-form-{{tipos_pet.id}}').submit();">Excluir</button>
+          </td>
+          <form id="logout-form-{{tipos_pet.id}}" action="/tipo_pet/{{tipos_pet.id}}" method="POST" style="display: none;">
+            <input type="hidden" name="_method" value="DELETE" />
+          </form>
+        </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+
+{% endblock %}

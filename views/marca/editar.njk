@@ -1,0 +1,30 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+<h1>Alteração de Marca</h1>
+<div class="col-md-6">
+  <form action="/marca/{{marca.id}}" method="post">
+    <input type="hidden" name="_method" value="PUT">
+
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" value="{{marca.nome}}">
+    </div>
+
+    <div class="form-group">
+      <label for="nome_empresa">Empresa</label>
+      <input type="text" class="form-control" name="nome_empresa" id="nome_empresa" placeholder="Empresa" value="{{marca.nome_empresa}}">
+    </div>
+
+    <div class="form-group">
+      <label for="telefone_empresa">Telefone Empresa</label>
+      <input type="text" class="form-control" name="telefone_empresa" id="telefone_empresa" placeholder="Telefone Empresa" value="{{marca.telefone_empresa}}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="#" class="btn btn-default">Voltar</a>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+  <h1>Categorias</h1>
+
+  <a href="/categoria/novo" class="btn btn-primary">Novo</a>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for categoria in categorias %}
+        <tr>
+          <td>{{categoria.id}}</td>
+          <td>{{categoria.nome}}</td>
+          <td>
+            <a href="/categoria/{{categoria.id}}" class="btn btn-primary">Editar</a>
+            <button class="btn btn-danger"
+              onclick="event.preventDefault(); document.getElementById('logout-form-{{categoria.id}}').submit();">Excluir</button>
+          </td>
+          <form id="logout-form-{{categoria.id}}" action="/categoria/{{categoria.id}}" method="POST" style="display: none;">
+            <input type="hidden" name="_method" value="DELETE" />
+          </form>
+        </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+
+{% endblock %}

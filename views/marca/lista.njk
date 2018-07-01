@@ -1,0 +1,40 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+  <h1>Marcas</h1>
+
+  <a href="/marca/novo" class="btn btn-primary">Novo</a>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Empresa</th>
+        <th>Telefone Empresa</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for marca in marcas %}
+        <tr>
+          <td>{{marca.id}}</td>
+          <td>{{marca.nome}}</td>
+          <td>{{marca.nome_empresa}}</td>
+          <td>{{marca.telefone_empresa}}</td>
+          <td>
+            <a href="/marca/{{marca.id}}" class="btn btn-primary">Editar</a>
+            <button class="btn btn-danger"
+              onclick="event.preventDefault(); document.getElementById('logout-form-{{marca.id}}').submit();">Excluir</button>
+          </td>
+          <form id="logout-form-{{marca.id}}" action="/marca/{{marca.id}}" method="POST" style="display: none;">
+            <input type="hidden" name="_method" value="DELETE" />
+          </form>
+        </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+
+{% endblock %}

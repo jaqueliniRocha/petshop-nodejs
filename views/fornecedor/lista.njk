@@ -1,0 +1,43 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+  <h1>Fornecedores</h1>
+
+  <a href="/fornecedor/novo" class="btn btn-primary">Novo</a>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>CNPJ</th>
+        <th>Endereço</th>
+        <th>Telefone</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for fornecedor in fornecedores %}
+        <tr>
+          <td>{{fornecedor.id}}</td>
+          <td>{{fornecedor.nome}}</td>
+          <td>{{fornecedor.cnpj}}</td>
+          <td>{{fornecedor.endereco}}</td>
+          <td>{{fornecedor.telefone}}</td>
+          <td>
+            <a href="/fornecedor/{{fornecedor.id}}" class="btn btn-primary">Editar</a>
+            <button class="btn btn-danger"
+              onclick="event.preventDefault(); document.getElementById('logout-form-{{fornecedor.id}}').submit();">Excluir</button>
+          </td>
+          <form id="logout-form-{{fornecedor.id}}" action="/fornecedor/{{fornecedor.id}}" method="POST" style="display: none;">
+            <input type="hidden" name="_method" value="DELETE" />
+          </form>
+        </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+
+{% endblock %}

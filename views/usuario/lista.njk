@@ -1,0 +1,43 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+  <h1>Usuários</h1>
+
+  <a href="/usuario/novo" class="btn btn-primary">Novo</a>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Email</th>
+        <th>Nome de Usuário</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for usuario in usuarios %}
+        <tr>
+          <td>{{usuario.id}}</td>
+          <td>{{usuario.nome}}</td>
+          <td>{{usuario.cpf}}</td>
+          <td>{{usuario.email}}</td>
+          <td>{{usuario.username}}</td>
+          <td>
+            <a href="/usuario/{{usuario.id}}" class="btn btn-primary">Editar</a>
+            <button class="btn btn-danger"
+              onclick="event.preventDefault(); document.getElementById('logout-form-{{usuario.id}}').submit();">Excluir</button>
+          </td>
+          <form id="logout-form-{{usuario.id}}" action="/usuario/{{usuario.id}}" method="POST" style="display: none;">
+            <input type="hidden" name="_method" value="DELETE" />
+          </form>
+        </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+
+{% endblock %}
