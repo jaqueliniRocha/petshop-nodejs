@@ -6,7 +6,7 @@ var db = require('../db');
 router.get('/', (req, res, next) => {
   if(req.query.nome){
     db("petshop.produtos")
-    .where('nome', 'like', '%'+ req.query.nome +'%')
+    .where('nome', 'ilike', '%'+ req.query.nome +'%')
     .then((produtos) => {
       res.render('produto/lista',{
         produtos: produtos
