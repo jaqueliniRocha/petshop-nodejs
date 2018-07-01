@@ -4,7 +4,16 @@
 
   <h1>Produtos</h1>
 
-  <a href="/produto/novo" class="btn btn-primary">Novo</a>
+  <div class="col-md-6">
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" value="{{produto.nome}}">
+    </div>
+
+    <a id="busca" href="/produto" class="btn btn-primary">Busca</a>
+
+    <a href="/produto/novo" class="btn btn-primary">Novo</a>
+  </div>
 
   <table class="table table-striped">
     <thead>
@@ -43,5 +52,13 @@
     </tbody>
   </table>
 
-
+  <script language="javascript">
+    $("#nome").keyup(function() {
+      $('#busca').attr('href', function(index, value) {
+        return "/produto" + '?nome=' + $('#nome').val();
+      });
+    });
+      
+  </script>
+  
 {% endblock %}

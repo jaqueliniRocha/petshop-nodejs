@@ -8,6 +8,9 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -33,11 +36,12 @@
           <li><a href="/produto">Produtos</a></li>
           <li><a href="/tipo_pet">Tipos Pet</a></li>
           <li><a href="/fornecedor">Fornecedores</a></li>
+          <li><div id="data" style="color:white;text-align:right;margin:5px"></div></li>
         </ul>
       </div>
 
     </div>
-
+    
   </nav>
 
   <div class="container">
@@ -48,8 +52,18 @@
     </div>
   </div>
 
+  <script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    $(document).ready(function() {
+      $.ajax({
+        url: "https://api.openweathermap.org/data/2.5/weather?q=Porto%20Alegre,br&appid=7eefca23d14bacbb2d2805d9b1901d5d&units=metric"
+      }).then(function(data) {
+          imgurl="https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+          $('#data').append("<img src='" + imgurl + "'/>" + data.main.temp + " °C - " + data.name);
+      });
+    });
+  </script>
+
+
 </body>
 </html>
