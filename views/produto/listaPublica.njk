@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <style>
+    .box {
+        border-radius: 5px;
+        padding: 20px;
+        font-size: 150%;
+        border:1px solid #000;
+        font-size: 15px 
+    }
+    
+    .wrapper {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+        margin-bottom: 2em;
+    }
+  </style>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">PetShop</a>
+      </div>
+
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Página Inicial</a></li>
+          <li class="active"><a href="#">Produtos</a></li>
+          <li class="active"><a href="#">Área do Cliente</a></li>
+          <li class="active"><a href="#">Carrinho</a></li>
+        </ul>
+      </div>
+
+    </div>
+    
+  </nav>
+
+  <div class="container">
+    <div class="row" style="margin-top: 50px;">
+      <div class="col-md-12">
+        <h1>Produtos</h1>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" value="{{produto.nome}}">
+            </div>
+
+            <a id="busca" href="/produto/lista" class="btn btn-primary">Busca</a>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="wrapper">
+            {% for produto in produtos %}
+                <div class="box">
+                    <img src="../img/image.JPG">
+                    Nome: {{produto.nome}}
+                    <br>
+                    Descrição: {{produto.descricao}}
+                    <br>
+                    Preço: {{produto.preco}}
+                    <br>
+                    <a href="" class="btn btn-default">Comprar</a>
+                </div>
+            {% endfor %}
+        </div>
+
+       </div>
+     </div>
+  </div>
+  
+  <script language="javascript">
+    $("#nome").keyup(function() {
+      $('#busca').attr('href', function(index, value) {
+        return "/produto/lista" + '?nome=' + $('#nome').val();
+      });
+    });
+      
+  </script>
+  
+</body>
+
+</html>

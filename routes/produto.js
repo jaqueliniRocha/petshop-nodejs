@@ -3,6 +3,25 @@ var express = require('express');
 var router = express.Router();
 var db = require('../db');
 
+router.get('/lista', (req, res, next) => {
+  if(req.query.nome){
+    db("petshop.produtos")
+    .where('nome', 'ilike', '%'+ req.query.nome +'%')
+    .then((produtos) => {
+      res.render('produto/listaPublica',{
+        produtos: produtos
+      });
+    },next);
+
+  } else {
+    db("petshop.produtos").then((produtos)=>{
+      res.render('produto/listaPublica',{
+        produtos: produtos
+      });
+    },next);
+  }
+});
+
 router.get('/', (req, res, next) => {
   if(req.query.nome){
     db("petshop.produtos")

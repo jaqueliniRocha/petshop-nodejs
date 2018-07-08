@@ -4,7 +4,7 @@ var	db	=	knex({
   version: '10.3',
   connection: {
     host : '127.0.0.1',
-    user : 'gugabarc',
+    user : 'postgres',
     password : 'admin',
     database : 'postgres'
   }
